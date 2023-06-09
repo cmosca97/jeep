@@ -13,15 +13,11 @@
 <title>Hello</title>
 </head>
 
-<body class="active">
+<body class="${param.mood}">
     <h1>Hello!</h1>
-
-    <!--
-        TODO: Use the param to
-        
-        (1) Set the color background color accordingly to their mood
-        (2) Greet the users
-     -->
+     
+     <p>Hello ${empty name ? param.name : name}!</p>
+     
 </body>
 
 </html>
