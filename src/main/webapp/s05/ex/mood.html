@@ -8,21 +8,35 @@
 <head>
 <meta charset="UTF-8">
 <link rel="icon" href="data:;base64,=">
+<link rel=“stylesheet” href=“https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css” 
+    integrity=“sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T” crossorigin=“anonymous”>
 <link rel="stylesheet" href="/jeep/css/simple.css">
 <title>Color selection</title>
 </head>
 
 <body>
+    <div class="container-fluid">
+        <header>
     <h1>Hello!</h1>
+</header>
+
     <form action="greeter">
-        <!--
-            TODO: Pass to the servlet two parameters:
-            
-            user: the user name
-            mood: the user mood, chosen among happy, sleepy, active, ...
-         -->
-        <button>OK</button>
+        <div class="form-group">
+         <label>User: <input name="name" placeholder="Please, enter your name"></label>
+        </div>
+         <br>
+         <div>
+                <span class="information">How are you feeling right now?</span><br>
+                <select class="form-select" name="mood">
+                    <option value="happy">happy</option>
+                    <option value="sleepy" selected>sleepy</option>
+                    <option value="active">active</option>
+                </select>
+            </div>
+            <br>
+        <button type="submit" class="btn btn-default">OK</button>
     </form>
+    </div>
 </body>
 
 </html>
