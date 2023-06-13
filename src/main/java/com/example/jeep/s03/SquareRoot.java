@@ -16,20 +16,28 @@ import jakarta.servlet.http.HttpServletResponse;
 
 public class SquareRoot extends HttpServlet {
     private static final Logger log = LogManager.getLogger(SquareRoot.class);
-    
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String number = request.getParameter("number");
         log.trace("Number is {" + number + "}");
-        
-        double cur = Double.parseDouble(number);
-        if (number == null) {
-            System.out.println("Please, insert a positive number!");
+
+        try {
+            double cur = Double.parseDouble(number);
+
+            double result = Math.sqrt(cur);
+            if (Double.isNaN(result)) {
+                request.setAttribute("message", "Please, insert a positive number!");
+            } else {
+                request.setAttribute("result", result);
+            }
+
+        } catch (Exception ex) {
+            log.error("Invalid input", ex);
+            request.setAttribute("message", "Please, insert a number!");
         }
-        double result = Math.sqrt(cur);
-        
-        request.setAttribute("result", result);
+
         request.getRequestDispatcher("squareRoot.jsp").forward(request, response);
     }
 }
